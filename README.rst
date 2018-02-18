@@ -170,9 +170,7 @@ De la structure de donnée à l'objet
 
 On va transformer un script d'affichage de bulletins de notes en utilisant la POO.
 
-Créer un fichier tp.py et copier y dedans le code ci-dessous::
-
-.. include:: tp.py
+Récupérer le fichier tp.py https://raw.githubusercontent.com/mtppy/poo-1/master/tp.py
 
 
 1) Création de la classe Eleve
