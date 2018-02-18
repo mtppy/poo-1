@@ -38,7 +38,6 @@ Pour le moment notre classe Bouteille fabrique un objet sans état avec lequel o
 On va commencer par ajouter la méthode **__init_\_** à notre classe bouteille pour pouvoir initialiser 
 l'état des objets créés.
 
-
 ::
 
     class Bouteille:
@@ -59,11 +58,14 @@ qui contient l'objet. Elle va ajouter les paramètres à notre méthod.
 Cette fois je peux instancier des bouteilles avec un état.
 
 ::
+
     une_bouteille = Bouteille(1, 0.5, True)
     print(une_bouteille)
 
 Je peux afficher les attributs de mon objet 
+
 ::
+
     print(une_bouteille.contenance)
     print(une_bouteille.contenu)
     print(une_bouteille.ouverte)
@@ -98,6 +100,7 @@ On peut modifier l'état d'un objet en modifiant directement sont attribut mais 
 voir pourquoi ça peut poser problème:
 
 ::
+
     une_bouteille = Bouteille(1, 0.5, True)
     print(une_bouteille)    
     une_bouteille.contenu = 0.7 
@@ -176,9 +179,7 @@ Créer un fichier tp.py et copier y dedans le code ci-dessous::
 ------------------------------
 
 
-Actuellement, les élèves sont représentés par des dictionnaires.
-
-::
+Actuellement, les élèves sont représentés par des dictionnaires.::
 
     {"prenom": "Jack", "nom": "O'Neill", "notes": []}
 
@@ -194,10 +195,12 @@ La méthode *__init__* de la classe *Eleve* prendra en paramètre *self*, *preno
 Remplace les dictionnaires utilisés pour représenter les élèves en objet Eleve.
 
 Avant::
+
     {"prenom": "Jack", "nom": "O'Neill", "notes": []},
 
 Après::
-    Eleve("Jack", "O'Neill"),
+
+     Eleve("Jack", "O'Neill"),
 
 
 Penser à changer dans les code les endroit ou élève est utilisé comme dictionnaire
@@ -206,9 +209,11 @@ eleve['notes'] deviendra eleve.notes
 Les appels de fonction deviendront des appels de methods:
 
 Avant::
+
     eleve_ajouter_note(eleve, randint(0, 20))
 
 Après::
+
     eleve.eleve_ajouter_note(randint(0, 20))
 
 
@@ -319,14 +324,16 @@ A votre avis, à quoi sert super() ?
 5) Mega bonnus:
 ---------------
 
-class Eleve(Personne):
-    def __init__(self, nom, prenom):
-        super().__init__(nom, prenom)
-        self._notes = []
+::
 
-    @property
-    def notes:
-        return list(self._notes)
+    class Eleve(Personne):
+        def __init__(self, nom, prenom):
+            super().__init__(nom, prenom)
+            self._notes = []
+
+        @property
+        def notes:
+            return list(self._notes)
 
 Quelle est l'avantage de faire une copie de la liste des notes avant de la retourner ?
 Comment s'appele ce principe qui consiste à ce qu'un objet soit toujours dans un état cohérent ?
