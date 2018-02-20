@@ -45,7 +45,7 @@ l'état des objets créés.
         Cette classe fabrique des bouteilles
         """
         
-        def __init__(self, contenance, contenu, ouverte)
+        def __init__(self, contenance, contenu, ouverte):
             self.contenance = contenance
             self.contenu = contenu
             self.ouverte = ouverte
@@ -90,7 +90,7 @@ Pour afficher joliment nos objets, ou peut définir la méthode **__str_\_**.
                 string = "<Bouteille {}/{}L ouverte >"
             else:
                 string = "<Bouteille {}/{}L fermée>"
-            return string.format(self._contenance, self._contenu)
+            return string.format(self.contenance, self.contenu)
 
     une_bouteille = Bouteille(1, 0.5, True)
     print(une_bouteille)
@@ -188,7 +188,7 @@ Créer la class *Eleve* et transformer les fonctions suivantes en méthodes
 * eleve_ajouter_note(eleve, note)
 * eleve_moyenne(eleve)
 
-La méthode *__init__* de la classe *Eleve* prendra en paramètre *self*, *prenom*, *nom*.
+La méthode *__init_\_* de la classe *Eleve* prendra en paramètre *self*, *prenom*, *nom*.
 
 Remplace les dictionnaires utilisés pour représenter les élèves en objet Eleve.
 
@@ -236,7 +236,7 @@ Créer la class *Promotion* et transformer les fonctions suivantes en méthodes.
 * promotion_moyenne(promotion):
 * promotion_passer_controle(promotion)
 
-La méthode *__init__* de la classe *Promotion* prendra en paramètre *self*, *nom*, *responsable*, *eleves*
+La méthode *__init_\_* de la classe *Promotion* prendra en paramètre *self*, *nom*, *responsable*, *eleves*
 Ne pas oublier que si promotion devient un objet, l'accès à ses attributs se feront comme ceci ``promotion.eleves``
 au lieu de ``promotion['eleves']``
 
@@ -292,7 +292,7 @@ Créer la classe *Responsable* et transformer les fonction suivante en méthode
 
 * responsable_to_str(responsable)
 
-La méthode *__init__* de la classe *Responsable* prendra en paramètre *self*, *prenom*, *nom*.
+La méthode *__init_\_* de la classe *Responsable* prendra en paramètre *self*, *prenom*, *nom*.
 
 
 4) (Bonus) Créer la classe Personne
@@ -300,8 +300,8 @@ La méthode *__init__* de la classe *Responsable* prendra en paramètre *self*, 
 
 La classe Personne sera la classe parente aux classes *Responsable* et *Eleve*
 
-Enlever la méthod *__init__* dans la classes *Responsable* et copié la dans
-la class *Personne*. Transformer la méthod *__init__* de la class *Eleve*
+Enlever la méthod *__init_\_* dans la classes *Responsable* et copié la dans
+la class *Personne*. Transformer la méthod *__init_\_* de la class *Eleve*
 comme ci-dessous::
 
     class Personne:
