@@ -232,6 +232,16 @@ Créer la classe *Responsable* et transformer les fonction suivante en méthode
 
 La méthode *__init_\_* de la classe *Responsable* prendra en paramètre *self*, *prenom*, *nom*.
 
+Remplace les dictionnaires utilisés pour représenter les responsables en objet Responsable.
+
+Avant::
+
+    {"prenom": "George", "nom": "Hammond"},
+
+Après::
+
+     Responsable("George", "Hammond"),
+
 
 3) Création de la classe promotion
 ----------------------------------
@@ -240,7 +250,7 @@ Actuellement, les promotions sont représentés par des dictionnaires.::
 
     {
         "nom": "SG-1",
-        "responsable": {"prenom": "George", "nom": "Hammond"},
+        "responsable": Responsable('George', 'Hammond'),
         "eleves":[
             Eleve("Jack", "O'Neill"),
             Eleve("Daniel", "Jackson"),
@@ -264,7 +274,7 @@ Avant::
 
     {
         "nom": "SG-1",
-        "responsable": {"prenom": "George", "nom": "Hammond"},
+        "responsable": Responsable('George', 'Hammond'),
         "eleves":[
             Eleve("Jack", "O'Neill"),
             Eleve("Daniel", "Jackson"),
@@ -278,7 +288,7 @@ Après::
 
     Promotion(
         "SG-1",
-        {"prenom": "George", "nom": "Hammond"},
+        Responsable('George', 'Hammond'),
         [
             Eleve("Jack", "O'Neill"),
             Eleve("Daniel", "Jackson"),
