@@ -90,7 +90,7 @@ Pour afficher joliment nos objets, ou peut définir la méthode **__str_\_**.
                 string = "<Bouteille {}/{}L ouverte >"
             else:
                 string = "<Bouteille {}/{}L fermée>"
-            return string.format(self.contenance, self.contenu)
+            return string.format(self.contenu, self.contenance)
 
     une_bouteille = Bouteille(1, 0.5, True)
     print(une_bouteille)
@@ -111,9 +111,9 @@ voir pourquoi ça peut poser problème:
 Que peut on dire de l'état de la bouteille ? 
 
 Comme on peut le voir, si l'on laisse l'accès libre au attribut, l'objet peut 
-se retrouver dans un état incoherent. Ce qui est source de bugs. on va doc 
+se retrouver dans un état incoherent. Ce qui est source de bugs.
 
-On va mettre un _ devant les noms de nos attributs, c'est une convention en Python qui signifie je ne veux pas que
+On va donc mettre un _ devant les noms de nos attributs, c'est une convention en Python qui signifie je ne veux pas que
 l'on touche directement a ces attributs. 
 
 Puis on va ajouter des méthodes pour modifier les attributs et faire en sorte que notre bouteille reste toujours
@@ -133,7 +133,7 @@ dans un état coherent.
 
         def remplir(self, quantite):
             if self._contenu + quantite > self._contenance:
-                raise ValueError('La valeur de quantite est trop grande')
+                raise ValueError('La bouteille va déborder !')
 
             self._contenu += quantite
 
@@ -154,7 +154,7 @@ dans un état coherent.
 
 C'est un des principes de la POO appelé encapsulation faire en sorte que la
 complexité d'un objet soit encapsulé à l'intérieur. L'objet expose des méthode
-pour que l'on manipule son l'état de manière à ce qu'il reste coherent.  
+pour que l'on manipule son l'état de manière à ce qu'il reste cohérent.  
 
 
 Ajouter une méthode **vider** qui met le contenue de la bouteille à 0.
@@ -201,8 +201,8 @@ Après::
      Eleve("Jack", "O'Neill"),
 
 
-Penser à changer dans les code les endroit ou élève est utilisé comme dictionnaire
-eleve['notes'] deviendra eleve.notes
+Penser à changer dans les code les endroit ou `eleve` est utilisé comme dictionnaire
+`eleve['notes']` deviendra `eleve.notes`
 
 Les appels de fonction deviendront des appels de methods:
 
@@ -215,7 +215,25 @@ Après::
     eleve.eleve_ajouter_note(randint(0, 20))
 
 
-2) Création de la classe promotion
+2) Création la classe responsable
+---------------------------------
+
+Actuellement, les responsables sont représentés par des dictionnaires.
+
+::
+
+    {"prenom": "George", "nom": "Hammond"},
+
+
+
+Créer la classe *Responsable* et transformer les fonction suivante en méthode
+
+* responsable_to_str(responsable)
+
+La méthode *__init_\_* de la classe *Responsable* prendra en paramètre *self*, *prenom*, *nom*.
+
+
+3) Création de la classe promotion
 ----------------------------------
 
 Actuellement, les promotions sont représentés par des dictionnaires.::
@@ -277,31 +295,13 @@ Noublier pas de changer les appels de fonction pas des appels de méthods:
 
 
 
-3) Création la classe responsable
----------------------------------
-
-Actuellement, les responsables sont représentés par des dictionnaires.
-
-::
-
-    {"prenom": "George", "nom": "Hammond"},
-
-
-
-Créer la classe *Responsable* et transformer les fonction suivante en méthode
-
-* responsable_to_str(responsable)
-
-La méthode *__init_\_* de la classe *Responsable* prendra en paramètre *self*, *prenom*, *nom*.
-
-
 4) (Bonus) Créer la classe Personne
 -----------------------------------
 
 La classe Personne sera la classe parente aux classes *Responsable* et *Eleve*
 
-Enlever la méthod *__init_\_* dans la classes *Responsable* et copié la dans
-la class *Personne*. Transformer la méthod *__init_\_* de la class *Eleve*
+Enlever la méthod *__init_\_* dans la classes *Responsable* et copiez la dans
+la class *Personne*. Transformez la méthod *__init_\_* de la class *Eleve*
 comme ci-dessous::
 
     class Personne:
@@ -314,6 +314,9 @@ comme ci-dessous::
         def __init__(self, nom, prenom):
             super().__init__(nom, prenom)
             self.notes = []
+    
+    class Responsable(Personne):
+        # ...
 
 
 A votre avis, à quoi sert super() ?
@@ -334,4 +337,5 @@ A votre avis, à quoi sert super() ?
             return list(self._notes)
 
 Quelle est l'avantage de faire une copie de la liste des notes avant de la retourner ?
+
 Comment s'appele ce principe qui consiste à ce qu'un objet soit toujours dans un état cohérent ?
